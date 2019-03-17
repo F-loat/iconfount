@@ -64,7 +64,7 @@ module.exports = function loadSvgImage(data, glyph, defaultCodePoint) {
   var scale  = 1000 / result.height;
   var d = new SvgPath(result.d)
             .translate(-result.x, -result.y)
-            .scale(scale)
+            .scale(data.match(/viewBox="0 0 1024 1024"/) ? 1 : scale)
             .abs()
             .round(1)
             .toString();
