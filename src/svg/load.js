@@ -52,13 +52,13 @@ module.exports = function loadSvgImage(data, glyph, defaultCodePoint) {
   // Collect ignored tags and attrs
   // We need to have array with unique values because
   // some tags and attrs have same names (viewBox, style, glyphRef, title).
-  var skipped = _.union(result.ignoredTags, result.ignoredAttrs);
+  // var skipped = _.union(result.ignoredTags, result.ignoredAttrs);
 
-  if (skipped.length > 0) {
-    log.warn(glyph.src, {skipped: skipped.toString()});
-  } else if (!result.guaranteed) {
-    log.warn(glyph.src, 'if image doesn\'t look as expected please convert to compound path manually');
-  }
+  // if (skipped.length > 0) {
+  //   log.warn(glyph.src, {skipped: skipped.toString()});
+  // } else if (!result.guaranteed) {
+  //   log.warn(glyph.src, 'if image doesn\'t look as expected please convert to compound path manually');
+  // }
 
   // Scale to standard grid
   var scale  = 1000 / result.height;
