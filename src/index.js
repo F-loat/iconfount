@@ -402,9 +402,11 @@ module.exports = function build(configFile) {
   var glyphsPromise = config.glyphs.map(function(glyph) {
     var xml = fs.readFileSync(path.join(glyphsDir, glyph.src), 'utf-8');
 
+    var hackedXml = xml.replace(/px" viewBox="0 0 \d* \d*"/, 'px" viewBox="0 0 1024 1024"');
+
     return new Promise(function(resolve, reject) {
       try {
-        svgo.optimize(xml).then(function(cleanXml) {
+        svgo.optimize(hackedXml).then(function(cleanXml) {
           if (cleanXml.error) {
             return reject(error);
           }
